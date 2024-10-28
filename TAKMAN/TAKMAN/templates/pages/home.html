@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Список коттеджей</h1>
+    <ul>
+        {% for cottage in cottages %}
+            <li>
+                <h2>{{ cottage.name }}</h2>
+                <p>Цена: {{ cottage.price }} руб.</p>
+                <p>{{ cottage.description }}</p>
+
+                <h3>Фотографии:</h3>
+                <ul>
+                    {% for image in cottage.images.all %}
+                        <li><img src="{{ image.image.url }}" alt="Фото коттеджа" style="width: 200px;"></li>
+                    {% empty %}
+                        <li>Нет фотографий</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

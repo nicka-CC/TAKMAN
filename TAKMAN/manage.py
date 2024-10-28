@@ -21,19 +21,7 @@ def main():
 if __name__ == '__main__':
     main()
 
-# TODO: [backend] акаунт модера со статусом
-# TODO: [backend] пополнение ски-пасса get, post, patch, delete
-# TODO: [backend] покупка ски пасса get, patch, post, delete
-# TODO: [backend] покупка сертификатов get, patch, post, delete
-# TODO: [backend] трассы post, get, patch, delete
-# TODO: [backend] бронирование коттеджей post, get, patch, delete
-# TODO: [backend] бронировать коттеджи post, get, patch, delete
-# TODO: [backend] коттеджи post, get, patch, delete
-# TODO:[backend] афиша post, get, patch, delete
-# TODO: [backend] наши услуги post, get, patch, delete
-# TODO: [backend] бронировать инструмент post, get, patch, delete
-# TODO:[backend] бронировать инструктура post, get, patch, delete
-
+# TODO:[backend] Заполнить бд
 
 # TODO: [frontend] 1920 - 960 - mobile-first
 # TODO:[frontend] pages (main, лыжи, проживание, услуги, цены, как добраться, ниформация, бронь инструктура, бронь инструмента, коттедж, events)
