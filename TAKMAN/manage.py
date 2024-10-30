@@ -21,7 +21,6 @@ def main():
 if __name__ == '__main__':
     main()
 
-# TODO:[backend] Заполнить бд
 
 # TODO: [frontend] 1920 - 960 - mobile-first
 # TODO:[frontend] pages (main, лыжи, проживание, услуги, цены, как добраться, ниформация, бронь инструктура, бронь инструмента, коттедж, events)
