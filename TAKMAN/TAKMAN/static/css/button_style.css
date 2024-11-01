@@ -1,0 +1,29 @@
+/* Базовый стиль кнопки */
+button.base-button {
+    padding: 13px 38px;
+    font-size: 18px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    color: #181F26;
+}
+
+/* Тема Primary */
+button.btn-second {
+    background-color: rgba(0, 0, 0, 0.16);
+    color: white;
+     font-size: 18px;
+    border: 2px solid white;
+    padding:13px 17px
+}
+
+/* Тема Secondary */
+button.btn-third {
+   padding: 13px 38px;
+    font-size: 18px;
+    border-radius: 4px;
+    border: 3px solid #181F26;
+    cursor: pointer;
+    color: #181F26;
+}
+
