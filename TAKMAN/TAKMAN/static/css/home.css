@@ -1,0 +1,6 @@
+.posters{
+    display:flex;
+}
+.poster{
+    width: 710px;
+}

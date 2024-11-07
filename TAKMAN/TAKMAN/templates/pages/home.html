@@ -2,68 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
+    <title>ТАКМАН</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
+     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<style>
+.posters{
+    display:flex;
+    margin: 0 auto;
+    gap:10px;
+}
+.poster{
+    width: 100%;
+}
+.info-services{
+    background: #181F26;
+    padding: 80px;
+    margin: 0 -8px 0 -8px;
+}
+.info-posters{
+    background: #ffffff;
+    padding: 80px;
+    margin: 0 -8px 0 -8px;
+}
+.info-services-text{
+    color:white;
+    margin-bottom: 16px;
+}
+.info-posters-text{
+    color: #000000;
+    margin-bottom: 16px;
+}
+.info-services-title{
+    font-size: 72px;
+}
+</style>
 </head>
 <body>
-{% include 'ui/button.html' with button_class="btn-primarmy" button_theme="btn-third"  button_text="Click me!" %}
-{% include 'ui/input.html' %}
+{% extends 'pages/base.html' %}
 
- <p>Number of clicks: <span id="clickCount">0</span></p>
+{% block title %}Главная страница{% endblock %}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let clickCount = 0;
-            const button = document.querySelector('.btn-primarmy');
-
-            if (button) {
-                button.addEventListener('click', function() {
-                    clickCount += 1;
-                    document.getElementById("clickCount").textContent = clickCount;
-                });
-            }
-        });
-    </script>
-<!-- шаблон HTML -->
-<form method="post">
-    {% csrf_token %}
-    {{ date_form.date.label_tag }}  <!-- Отображение метки поля даты -->
-    {{ date_form.date }}  <!-- Отображение самого поля даты -->
-    <button type="submit">Отправить</button>
-</form>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        flatpickr(".base-date-input", {
-            dateFormat: "Y-m-d", // формат даты
-            altInput: true, // для отображения удобного формата
-            altFormat: "F j, Y", // видимый формат
-            allowInput: true
-        });
-    });
-</script>
-
-<h1>Список коттеджей</h1>
-    <ul>
-        {% for cottage in cottages %}
-            <li>
-                <h2>{{ cottage.name }}</h2>
-                <p>Цена: {{ cottage.price }} руб.</p>
-                <p>{{ cottage.description }}</p>
-
-                <h3>Фотографии:</h3>
-                <ul>
-                    {% for image in cottage.images.all %}
-                        <li><img src="{{ image.image.url }}" alt="Фото коттеджа" style="width: 200px;"></li>
-                    {% empty %}
-                        <li>Нет фотографий</li>
-                    {% endfor %}
-                </ul>
-            </li>
+{% block content %}
+    {% include 'widgets/firstWidget.html' %}
+    <div class="info-services">
+        <div class="info-services-text info-services-title">Наши услуги</div>
+        <div class="info-services-text">Весь спектр услуг от проката инвентаря до катания на снегоходах!</div>
+        <a href="/services">{% include 'ui/button.html' with button_theme='base-button' button_class='btn' button_text='Подробнее' %}</a>
+    </div>
+    {% include 'widgets/slider.html' %}
+    {% include 'widgets/ski-pas.html' %}
+{#    <h1>Список коттеджей</h1>#}
+{#    <ul>#}
+{#        {% for cottage in cottages %}#}
+{#            <li>#}
+{#                <h2>{{ cottage.name }}</h2>#}
+{#                <p>Цена: {{ cottage.price }} руб.</p>#}
+{#                <p>{{ cottage.description }}</p>#}
+{##}
+{#                <h3>Фотографии:</h3>#}
+{#                <ul>#}
+{#                    {% for image in cottage.images.all %}#}
+{#                        <li><img src="{{ image.image.url }}" alt="Фото коттеджа" style="width: 200px;"></li>#}
+{#                    {% empty %}#}
+{#                        <li>Нет фотографий</li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            </li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+<div class="info-posters">
+        <div class="info-posters-text info-services-title">Афиша</div>
+        <div class="info-posters-text">Каждые выходные мы проводим интересные мероприятия.</div>
+        <a href="/posters">{% include 'ui/button.html' with button_theme='base-button' button_class='btn' button_text='Подробнее' %}</a>
+    </div>
+<div class="posters">
+    {% for poster in posters %}
+        <div class="poster">
+         {% for image in poster.images.all %}
+            <div class="poster"><img src="{{ image.image.url }}" alt="Фото коттеджа" style="width:100%;"></div>
         {% endfor %}
-    </ul>
+        </div>
+
+    {% endfor %}
+</div>
+   {% include 'widgets/secondWidget.html' %}
+    {% include 'widgets/howgoing.html' %}
+{% include 'widgets/maps.html' %}
+
+
+{% endblock %}
 </body>
 </html>

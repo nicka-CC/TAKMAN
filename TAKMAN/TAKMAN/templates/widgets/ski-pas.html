@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    {% load static %}
+    <style>
+        .tab {
+            display: none; /* Скрыть все вкладки по умолчанию */
+            margin-top: 10px; /* Добавить отступ сверху */
+        }
+        .tab.active {
+            display: block; /* Показать вкладку, если она активна */
+        }
+        .tab-links {
+            cursor: pointer;
+            margin: 0 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+        .tab-links.active {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/ski-pass.css' %}">
+</head>
+<div class="all">
+<h1>Ски-пасс на весь сезон</h1>
+
+<h3>Если покупать ски-пасс сразу на весь сезон, можно здорово сэкономить!</h3>
+<div>
+    <div class="tab-links active" onclick="showTab(this, 'replenish-form')">Пополнение</div>
+    <div class="tab-links" onclick="showTab(this, 'buy-form')">Покупка</div>
+</div>
+
+<!-- Форма пополнения -->
+<div id="replenish-form" class="tab">
+    <div class="title-form">Пополнение ски-пасса</div>
+    <form method="post" action="" class="form">
+        {% csrf_token %}
+        {% include 'ui/input.html' with form_field=replenishment_form.tarif %}
+        {% include 'ui/input.html' with form_field=replenishment_form.phone %}
+        {% include 'ui/input.html' with form_field=replenishment_form.email %}
+        {% include 'ui/input.html' with form_field=replenishment_form.numberCard %}
+        {% include 'ui/input.html' with form_field=replenishment_form.summ %}
+        <div class="bodyButton">
+            <button class="butStyle" type="submit" name="replenish">Оплатить</button>
+        <div class="imgs">
+            <div><img width="60px" src="{% static "/icons/visa.svg" %}"></div>
+            <div><img width="30px" src="{% static "/icons/masterCard.svg"%}"></div>
+        </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- Форма покупки -->
+<div id="buy-form" class="tab">
+    <div  class="title-form">Покупка ски-пасса</div>
+    <form method="post" action=""  class="form">
+        {% csrf_token %}
+        {% include 'ui/input.html' with form_field=buy_ski_pass_form.type %}
+        {% include 'ui/input.html' with form_field=buy_ski_pass_form.price %}
+        {% include 'ui/input.html' with form_field=buy_ski_pass_form.fullName %}
+        {% include 'ui/input.html' with form_field=buy_ski_pass_form.phone %}
+        {% include 'ui/input.html' with form_field=buy_ski_pass_form.email %}
+        <div class="bodyButton">
+            <button class="butStyle" type="submit" name="replenish">Оплатить</button>
+        <div class="imgs">
+            <div><img width="60px" src="{% static "/icons/visa.svg" %}"></div>
+            <div><img width="30px" src="{% static "/icons/masterCard.svg"%}"></div>
+        </div>
+        </div>
+    </form>
+</div>
+
+<script>
+   function showTab(element, tabName) {
+       // Скрыть все вкладки
+       const tabs = document.querySelectorAll('.tab');
+       tabs.forEach(tab => {
+           tab.classList.remove('active');
+       });
+
+       // Удалить активный класс у всех ссылок на вкладки
+       const tabLinks = document.querySelectorAll('.tab-links');
+       tabLinks.forEach(link => {
+           link.classList.remove('active');
+       });
+
+       // Показать выбранную вкладку и сделать ссылку активной
+       document.getElementById(tabName).classList.add('active');
+       element.classList.add('active');
+   }
+
+   // Установить начальную видимость для первой вкладки
+   {#document.addEventListener("DOMContentLoaded", function() {#}
+   {#    document.getElementById("replenish-form").classList.add("active");#}
+   {# });#}
+</script>
+
+</div>
+</html>

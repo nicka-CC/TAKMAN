@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-_f@r02tg%lesk)sp6c_pw-qc!no#i^t&(r-8l4jdl%gfs==lgr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'TAKMAN',
 ]
+HANDLER404 = 'TAKMAN.views.redirect_on_404'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

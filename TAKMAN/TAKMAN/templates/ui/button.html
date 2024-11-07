@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<button class=" {{ button_theme }}  {{ button_class }}">{{ button_text }}</button>
+<button  class=" {{ button_theme }}   {{ button_class }}" type="{{ button_type|default:'button' }}">{{ button_text }}</button>
 <link rel="stylesheet" href="{% static 'css/button_style.css' %}">
 </body>
 </html>

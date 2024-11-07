@@ -1,0 +1,104 @@
+/* Основные стили */
+.body {
+    display: flex;
+    background: rgba(24, 31, 38, 0.39);
+    margin: -8px;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Установить высокий z-index, чтобы header был поверх остальных элементов */
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /
+}
+
+.fst-content {
+    display: flex;
+    padding: 0 40px;
+    margin: auto 0;
+    gap: 30px;
+}
+
+.snd-content {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    gap: 20px;
+    padding: 12px 0px;
+}
+
+.ass {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.logo {
+    padding: 10px 0px 3px 80px;
+}
+.right {
+    display: flex;
+    gap: 20px;
+    max-height: 30px;
+    margin: auto 0;
+}
+.rights {
+    display: flex;
+    gap: 20px;
+    max-height: 30px;
+
+}
+.burger {
+    margin: auto 0;
+}
+
+@media (min-width: 1365px) {
+   .burger {
+       display: none;
+   }
+}
+
+/* Скрыть .fst-content и показать бургер-меню на экранах 1365px и меньше */
+@media (max-width: 1365px) {
+    .fst-content {
+        display: none;
+    }
+
+}
+@media (max-width: 600px) {
+    .right {
+         display: none !important;
+    }
+    .thrd-content {
+        display: none !important;
+    }
+    .burger{
+        margin-right: 30px;
+    }
+    .logo {
+    padding: 10px 0px 3px 30px;
+}
+}
+
+/* Стили для бокового меню */
+.sidebar-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(24, 31, 38, 0.95);
+    padding-top: 60px;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.sidebar-menu.open {
+    display: flex;
+}
+.sunny{
+    color:#FFB802;
+}

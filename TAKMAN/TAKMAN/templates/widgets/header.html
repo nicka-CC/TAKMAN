@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+</head>
+<body>
+<div class="body">  <a href="/" class="logo"><img  src="{% static 'icons/logo.svg' %}"></a>
+    <div class="fst-content">
+
+        <a href="/about/" class="ass">Катание</a>
+        <a href="/contact/" class="ass">Проживание</a>
+        <a href="/contact/" class="ass">Услуги</a>
+        <a href="/contact/" class="ass">Цены</a>
+         <a href="/contact/" class="ass">Как добраться</a>
+         <a href="/contact/" class="ass">Информация</a>
+         <a href="/contact/" class="ass sunny">Лето <img width="16px" src="{% static 'icons/sun-icon.svg' %}"></a>
+    </div>
+    <div class="snd-content">
+        <div class="right">
+            <a href="https://vk.com"><img width="30px" src="{% static 'icons/vk-icon-white.svg' %}"></a>
+            <a href="https://whatsapp"><img width="30px" src="{% static 'icons/whatsapp-icon-white.svg' %}"></a>
+            <a href="https://instagram"><img width="30px" src="{% static 'icons/instagram-icon-white.svg' %}"></a>
+        </div>
+        <div class="thrd-content">
+            {% include 'ui/button.html' with button_class="btn-primarmy" button_theme="btn-second"  button_text="Купить онлайн" %}
+        </div>
+        <div class="burger" onclick="toggleMenu()">
+            <img width="30px" src="{% static 'icons/burger.svg' %}">
+        </div>
+    </div>
+</div>
+
+<!-- Боковое меню -->
+<div id="sidebar-menu" class="sidebar-menu">
+    <a href="/about/" class="ass">Катание</a>
+    <a href="/contact/" class="ass">Проживание</a>
+    <a href="/contact/" class="ass">Услуги</a>
+    <a href="/contact/" class="ass">Цены</a>
+    <a href="/contact/" class="ass">Как добраться</a>
+    <a href="/contact/" class="ass">Информация</a>
+    <a href="/contact/" class="ass sunny">Лето <img width="16px" src="{% static 'icons/sun-icon.svg' %}"></a>
+        {% include 'ui/button.html' with button_class="btn-primarmy" button_theme="btn-second"  button_text="Купить онлайн" %}
+        <div class="rights">
+            <a href="https://vk.com"><img width="30px" src="{% static 'icons/vk-icon-white.svg' %}"></a>
+            <a href="https://whatsapp"><img width="30px" src="{% static 'icons/whatsapp-icon-white.svg' %}"></a>
+            <a href="https://instagram"><img width="30px" src="{% static 'icons/instagram-icon-white.svg' %}"></a>
+        </div>
+{#        <div class="thrd-content">#}
+
+{#        </div>#}
+
+
+</div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('sidebar-menu');
+        menu.classList.toggle('open');
+
+        // Добавляем/удаляем обработчик клика вне меню
+        if (menu.classList.contains('open')) {
+            document.addEventListener('click', closeMenuOnClickOutside);
+        } else {
+            document.removeEventListener('click', closeMenuOnClickOutside);
+        }
+    }
+
+    function closeMenuOnClickOutside(event) {
+        const menu = document.getElementById('sidebar-menu');
+        const burger = document.querySelector('.burger');
+
+        // Проверка, если клик был не по меню или "бургер"-иконке
+        if (!menu.contains(event.target) && !burger.contains(event.target)) {
+            menu.classList.remove('open');
+            document.removeEventListener('click', closeMenuOnClickOutside);
+        }
+    }
+</script>
+
+
+</body>
+</html>

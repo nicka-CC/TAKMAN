@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яндекс.Карты</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=b64b9bc0-f824-4f50-b7bf-9c2b7b818201" type="text/javascript"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 450px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        ymaps.ready(init);
+
+        function init() {
+            var map = new ymaps.Map("map", {
+                center: [58.025568, 56.967432],
+                zoom: 10
+            });
+
+
+            var point1 = [58.010455, 56.229443];
+            var point2 = [58.353993, 57.772138];
+            var placemark1 = new ymaps.Placemark(point1, {
+                balloonContent: 'Начальная точка'
+            });
+            var placemark2 = new ymaps.Placemark(point2, {
+                balloonContent: 'Конечная точка'
+            });
+
+            map.geoObjects.add(placemark1);
+            map.geoObjects.add(placemark2);
+
+
+            ymaps.route([point1, point2], {
+                mapStateAutoApply: true,
+                bounded: true
+            }).then(function(route) {
+                map.geoObjects.add(route);
+            }, function(error) {
+                alert("Ошибка построения маршрута: " + error.message);
+            });
+
+            map.geoObjects.add(route);
+        }
+    </script>
+</body>
+</html>

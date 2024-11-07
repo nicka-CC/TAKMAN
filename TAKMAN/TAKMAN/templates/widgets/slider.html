@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        {% for service in services %}
+            <div class="swiper-slide">
+                {% if service.images.first %}
+                    <div class="slide-content">
+                        <img src="{{ service.images.first.image.url }}" alt="Фото услуги">
+                        <div class="overlay">
+                            <h2>{{ service.name }}</h2>
+                            <p class="truncated-text">{{ service.short_description }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="slide-content no-image">
+                        <p>Нет фотографий</p>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+<style>
+.swiper-container {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    height: 500px;
+    margin: 40px auto;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.slide-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 40px;
+    left: 100px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.overlay h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.overlay p {
+    margin: 5px 0 0;
+    font-size: 16px;
+}
+
+@media (max-width: 600px) {
+    .truncated-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+    .overlay{
+        left:10px;
+    }
+
+}
+
+</style>
+    <script>
+
+  const swiper = new Swiper('.swiper-container', {
+  slidesPerView: 1.5,
+  spaceBetween: 20,
+  centeredSlides: true,
+  loop: true,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+});
+
+</script>
+</html>

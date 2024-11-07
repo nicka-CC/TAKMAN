@@ -2,10 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
- {% load static %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/input_style.css' %}">
 </head>
 <body>
-<input placeholder="{{ input_placeholder }}" class=" base-input {{ input_class }}">
-<link rel="stylesheet" href="{% static 'css/input_style.css' %}">
+    <div class="input-container">
+        {{ form_field.label_tag }}
+        <input
+            type="{{ form_field.field.widget.input_type }}"
+            name="{{ form_field.name }}"
+            id="{{ form_field.id_for_label }}"
+            value="{{ form_field.value|default_if_none:'' }}"
+            placeholder="{{ form_field.field.widget.attrs.placeholder }}"
+            class="base-input {{ input_class|default:'' }}"
+            {% if form_field.field.widget.attrs %}
+                {% for attr, value in form_field.field.widget.attrs.items %}
+                    {{ attr }}="{{ value }}"
+                {% endfor %}
+            {% endif %}
+        >
+        {% if form_field.errors %}
+            <div class="error">{{ form_field.errors|join:', ' }}</div>  <!-- Отображение ошибок валидации -->
+        {% endif %}
+    </div>
 </body>
 </html>

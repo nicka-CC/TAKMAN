@@ -1,0 +1,54 @@
+.tab{
+    border: 1px solid black;
+    border-radius:15px;
+    padding:40px;
+    width:70%;
+    margin: 40px auto;
+    background: white;
+    color:black;
+}
+.form{
+    display:flex;
+    flex-direction: column;
+    gap:30px;
+}
+.butStyle{
+    padding: 13px 38px;
+    font-size: 18px;
+    border-radius: 4px;
+     border: 3px solid #181F26;
+    cursor: pointer;
+    color: #181F26;
+}
+.bodyButton{
+    display:flex;
+    gap: 10px;
+}
+.paymentServices{
+    margin: auto 0;
+}
+.imgs{
+    display:flex;
+    flex-direction: row;
+    gap:30px;
+}
+.all{
+    background: #181F26;
+    margin:0 -8px;
+    padding:10px 30px 50px 30px;
+    color:white;
+    overflow-x: hidden;
+}
+.tab-links{
+    color:black;
+}
+.title-form{
+    font-size: 25px;
+    margin-bottom:15px;
+}
+@media(max-width: 500px){
+    .tab{
+        padding:30px;
+        width:85%;
+    }
+}

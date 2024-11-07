@@ -16,3 +16,12 @@ input.danger-input:focus-visible{
     padding:9px 18px;
     border: 1px solid rgba(166, 17, 17, 0.98);
 }
+.input-container{
+    display:flex;
+    gap:50px;
+}
+@media (max-width: 500px) {
+    .input-container{
+        gap:20px;
+    }
+}
