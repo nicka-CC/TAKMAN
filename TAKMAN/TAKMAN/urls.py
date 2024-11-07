@@ -11,6 +11,8 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('skiing', views.skiing, name='skiing'),
+    path('not-found', views.notFound, name='not_found'),
 ]
 
 # Добавьте этот код перед редиректом
@@ -19,5 +21,5 @@ if settings.DEBUG:
 
 # Теперь редирект
 urlpatterns += [
-    re_path(r'^.*$', RedirectView.as_view(url='/', permanent=False)),
+    re_path(r'^.*$', RedirectView.as_view(url='/not-found', permanent=False)),
 ]

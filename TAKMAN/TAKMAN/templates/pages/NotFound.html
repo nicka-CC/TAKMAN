@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>{% extends 'pages/base.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>ТАКМАН</title>
+<style>
+</style>
+</head>
+<div>
+
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+
+    <style>
+    .tcs-container {
+        overflow-x: hidden;
+        margin: -8px -8px 0 -8px;
+    }
+
+    .info-services {
+        position: relative;
+        text-align: left;
+        color: white;
+        margin-bottom: 30px;
+    }
+
+    .info-services img {
+        width: 100%;
+        height: auto;
+        {#border-radius: 10px;#}
+    }
+
+    .info-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.4);
+        {#border-radius: 10px;#}
+    }
+
+    .info-services-title {
+        font-size: 48px;
+        margin-top: 20%;
+        margin-left: 30%;
+    }
+
+    .info-services-text {
+        font-size: 18px;
+         margin-left: 30%;
+        max-width: 900px;
+    }
+    @media(max-width: 600px) {
+        .info-services-title {
+            font-size: 20px;
+            margin-top: 10%;
+            margin-left: 20%;
+        }
+
+        .info-services-text {
+            font-size: 9px;
+            margin-left: 10%;
+            max-width: 200px;
+        }
+    }
+.snd-modal-nf{
+   padding:40px;
+
+}
+.title-nf{
+        font-size: 80px;
+    }
+.nf-bt{
+    width:90%;
+    margin-bottom: 30px;
+}
+
+</style>
+
+
+<div class="tcs-container">
+    <div class="info-services">
+        <img src="{% static 'static_images/IMG_1302 1.jpg' %}" alt="Услуги">
+        <div class="info-overlay">
+            <div class="info-services-title">Информация о курорте</div>
+            <div class="info-services-text">Добраться к нам можно несколькими способами: автобусом, электричкой и на личном транспорте. Из Перми или других городов — не важно!</div>
+        </div>
+    </div>
+</div>
+<div class="snd-modal-nf">
+    <div class="title-nf">Ошибка 404</div>
+    <div class="nf-bt">Такой страницы не существует!</div>
+    <a href="/">{% include 'ui/button.html' with button_theme='base-button' button_class='btn' button_text='На главную' %}</a>
+</div>
+{% endblock %}
+</div>
+</html>
