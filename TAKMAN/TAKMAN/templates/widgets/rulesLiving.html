@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ТАКМАН</title>
+    {% load static %}
+</head>
+<div class="rl-container">
+    <div class="rl-title">Правила пользования услугами курорта</div>
+    <div><img style="width:16px" src="{% static 'icons/icon-pdf.svg' %}"><a href="http://takman.ru/images/temp/1700737592655f3238e5c29.pdf">Правила проката</a></div>
+    <div><img style="width:16px" src="{% static 'icons/icon-pdf.svg' %}"><a href="http://takman.ru/images/temp/1700737583655f322f7f766.pdf">Правила поведения на территории горнолыжного курорта</a></div>
+    <div><img style="width:16px" src="{% static 'icons/icon-pdf.svg' %}"><a href="http://takman.ru/images/temp/1700738440655f3588ba02f.pdf">Правила поведения на горнолыжных трассах ГК «Такман»</a></div>
+    <div><img style="width:16px" src="{% static 'icons/icon-pdf.svg' %}"><a href="http://takman.ru/images/temp/170591020665ae1fbed0750.pdf">Правила оказания услуг инструкторов</a></div>
+    <div><img style="width:16px" src="{% static 'icons/icon-pdf.svg' %}"><a href="http://takman.ru/images/temp/170773096565c9e8154c78c.pdf">Правила пользования SKI-PASS </a></div>
+    <div><img style="width:16px" src="{% static 'icons/icon-pdf.svg' %}"><a href="http://takman.ru/images/temp/172431515566c6f61373106.pdf">Правила приобретения сезонного SKI-PASS</a></div>
+    <div><img style="width:16px" src="{% static 'icons/icon-pdf.svg' %}"><a href="http://takman.ru/images/temp/1700739045655f37e5dd41f.pdf">Правила пользования пассажирской канатной дорогой</a></div>
+</div>
+<style>
+.rl-container{
+    padding:40px;
+    overflow-x: hidden;
+}
+.rl-title{
+    font-size: 72px;
+    margin-bottom: 20px;
+}
+@media(max-width: 600px){
+    .rl-title{
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+}
+</style>
+</html>

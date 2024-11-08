@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Road Slider</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        /* Общий контейнер для всех дорог */
+        .roads {
+            display: flex;
+            flex-direction: column;
+            {#gap: 40px;#}
+            overflow-x: hidden;
+            margin: -8px -8px 0 -8px;
+
+            padding: 0;
+        }
+
+        /* Стиль для каждого блока road */
+        .road {
+            width: 100vw;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Внутренний слайдер для изображений */
+        .inner-slider {
+            width: 100%;
+            height: 940px; /* Увеличенная высота */
+            position: relative;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 940px;
+            object-fit: cover;
+        }
+
+        /* Текстовое описание дороги поверх изображения */
+        .road-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            {#justify-content: flex-;#}
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3); /* затемнение */
+            color: #fff;
+            z-index: 10;
+        }
+
+        .road-title {
+            margin-top:20%;
+            margin-left:10%;
+            font-size:80px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            max-width:400px
+        }
+        .road-description{
+            max-width:400px;
+            margin-left:10%;
+        }
+        @media (max-width: 600px) {
+            .road-title{
+                margin-top: 30%;
+                font-size:30px;
+            }
+            .inner-slider {
+
+            height: 400px;
+        }
+
+        .swiper-slide img {
+            height: 400px;
+        }
+
+        }
+        /* Индивидуальные стили для каждой кнопки навигации */
+        .inner-button-next,
+        .inner-button-prev {
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .inner-button-next {
+            right: 10px;
+        }
+
+        .inner-button-prev {
+            left: 10px;
+        }
+
+        /* Пагинация */
+        .swiper-pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+<div class="roads">
+
+        <div class="road">
+            <div class="swiper-container inner-slider">
+                <div class="swiper-wrapper">
+                    {% for image in cottage.images.all %}
+                        <div class="swiper-slide">
+                            <img src="{{ image.image.url }}" alt="{{ cottage.name }}">
+                            <div class="road-overlay">
+                                <div class="road-title">{{ cottage.name }}</div>
+                                <div class="road-description">{{ cottage.price }}₽ за сутки</div>
+                                  <div class="road-description">{{ cottage.description }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Индивидуальные кнопки навигации для каждого слайдера -->
+{#                <div class="swiper-pagination"></div>#}
+                <div class="swiper-button-next inner-button-next"></div>
+                <div class="swiper-button-prev inner-button-prev"></div>
+            </div>
+        </div>
+
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    // Инициализация слайдера для каждого блока road
+    document.querySelectorAll('.inner-slider').forEach((innerSlider, index) => {
+        new Swiper(innerSlider, {
+            slidesPerView: 1,
+            loop: true,
+            navigation: {
+                nextEl: `.inner-button-next`,
+                prevEl: `.inner-button-prev`,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    });
+</script>
+
+</body>
+</html>

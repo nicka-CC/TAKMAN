@@ -1,7 +1,7 @@
 # forms.py
 from django import forms
 
-from .models import BuySkiPass, ReplenishmentOfBalanceSkiPass
+from .models import BuySkiPass, ReplenishmentOfBalanceSkiPass, PeopleReservationCottage, CottageReservation
 
 
 class DateForm(forms.Form):
@@ -31,3 +31,18 @@ class BuySkiPassForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={'placeholder': 'Телефон'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Электронная почта'}),
         }
+
+class CottageReservationForm(forms.ModelForm):
+    class Meta:
+        model = CottageReservation
+        fields = ['dateFrom', 'dateTo', 'cottage']
+        widgets = {
+            'dateFrom': forms.DateInput(attrs={'type': 'date'}),
+            'dateTo': forms.DateInput(attrs={'type': 'date'}),
+        }
+
+# Форма для добавления людей
+class PeopleReservationForm(forms.ModelForm):
+    class Meta:
+        model = PeopleReservationCottage
+        fields = ['fullName']

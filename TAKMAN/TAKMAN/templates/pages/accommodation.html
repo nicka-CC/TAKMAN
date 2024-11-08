@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ТАКМАН</title>
+
+
+<!-- Подключение скрипта Swiper -->
+
+
+</head>
+<body>
+{% extends 'pages/base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+
+    {% include 'widgets/cottage.html' %}
+    {% include 'widgets/reservateCottage.html' %}
+    {% include 'widgets/rulesLiving.html' %}
+    {% include 'widgets/howgoing.html' %}
+    {% include 'widgets/maps.html' %}
+{% endblock %}
+
+</body>
+</html>

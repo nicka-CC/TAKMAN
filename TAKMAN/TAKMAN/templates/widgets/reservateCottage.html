@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div class="reservate-cottage-container">
+   <h1>Бронирование коттеджа</h1>
+    <form method="post">
+        {% csrf_token %}
+        <h2>Даты бронирования</h2>
+        <div class="form-fst">
+            {% include 'ui/input.html' with form_field=form.cottage %}
+            {% include 'ui/input.html' with form_field=form.dateTo %}
+            {% include 'ui/input.html' with form_field=form.dateFrom %}
+        </div>
+        <h2>Люди, бронирующие коттедж</h2>
+        <div id="people-container">
+            <div class="person-field">
+                {% include 'ui/input.html' with form_field=people_form.fullName %}
+            </div>
+        </div>
+        <button  class="butStyle" type="button" id="add-person">+</button>
+        <button  class="butStyle" type="button" id="remove-person">-</button>
+        <button  class="butStyle" type="submit">Забронировать</button>
+    </form>
+<style>
+    .form-fst{
+        display:flex;
+        gap:30px;
+    }
+    .butStyle{
+    padding: 13px 38px;
+    font-size: 18px;
+    border-radius: 4px;
+     border: 3px solid #181F26;
+    cursor: pointer;
+    color: #181F26;
+}
+
+.reservate-cottage-container{
+    overflow-x: hidden;
+    color:white;
+    background: #181F26;
+    margin: -20px -8px 0 -8px;
+    padding:40px
+}
+.snd-input{
+     padding:9px 18px;
+    border: 1px solid rgba(24, 31, 38, 0.5);
+    margin:45px;
+}
+@media (max-width: 600px) {
+    .form-fst{
+        flex-direction: column;
+    }
+
+}
+</style>
+    <script>
+        const addButton = document.getElementById('add-person');
+        const removeButton = document.getElementById('remove-person');
+        const peopleContainer = document.getElementById('people-container');
+        addButton.addEventListener('click', () => {
+            const newPersonField = document.createElement('div');
+            newPersonField.classList.add('person-field');
+            newPersonField.innerHTML = `
+                <label for="id_fullName">FullName:   </label>
+                <input class="snd-input" type="text" name="fullName" id="id_fullName" required>
+            `;
+            peopleContainer.appendChild(newPersonField);
+        });
+        removeButton.addEventListener('click', () => {
+            const personFields = peopleContainer.getElementsByClassName('person-field');
+            if (personFields.length > 1) {
+                peopleContainer.removeChild(personFields[personFields.length - 1]);
+            }
+        });
+    </script>
+</div>
+</html>

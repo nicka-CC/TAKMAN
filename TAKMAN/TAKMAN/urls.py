@@ -11,8 +11,10 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('skiing', views.skiing, name='skiing'),
+    path('skiing/', views.skiing, name='skiing'),
     path('not-found', views.notFound, name='not_found'),
+    path('accommodation/', views.accomodation_list, name='accommodation'),
+    path('accommodation/<int:id>/', views.accomodation_detail, name='accommodation_detail'),
 ]
 
 # Добавьте этот код перед редиректом
