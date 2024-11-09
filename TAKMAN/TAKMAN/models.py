@@ -143,7 +143,7 @@ class ReservationInstructor(models.Model):  # Исправлена опечат�
 
 
 class PeopleReservationInstructor(models.Model):  # Исправлена опечатка здесь
-    instructor = models.ForeignKey(ReservationInstructor, related_name='reservations', on_delete=models.CASCADE)
+    instructor = models.ForeignKey(ReservationInstructor, related_name='reservations_instructor', on_delete=models.CASCADE)
     fullName = models.CharField(max_length=30)
 
     def __str__(self):
@@ -163,7 +163,7 @@ class ReservationInstrument(models.Model):
 
 
 class PeopleReservationInstrument(models.Model):
-    instrument = models.ForeignKey(ReservationInstrument, related_name='reservations', on_delete=models.CASCADE)
+    instrument = models.ForeignKey(ReservationInstrument, related_name='reservations_instrument', on_delete=models.CASCADE)
     fullName = models.CharField(max_length=30)
 
     def __str__(self):

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ТАКМАН</title>
+</head>
+<body>
+{% extends 'pages/base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    {% include 'widgets/servicesFirstWidget.html' %}
+    {% include 'widgets/servicesWidgets.html' %}
+    {% include 'widgets/ski-pas.html' %}
+    {% include 'widgets/howgoing.html' %}
+    {% include 'widgets/maps.html' %}
+{% endblock %}
+
+</body>
+</html>

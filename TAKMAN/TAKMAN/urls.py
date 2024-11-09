@@ -15,6 +15,9 @@ urlpatterns = [
     path('not-found', views.notFound, name='not_found'),
     path('accommodation/', views.accomodation_list, name='accommodation'),
     path('accommodation/<int:id>/', views.accomodation_detail, name='accommodation_detail'),
+    path('services/', views.services, name='services'),
+    path('services/reservate-instructor/', views.reservateInstructor, name='reservate-instructor'),
+    path('services/reservate-instrument/', views.reservateInstrument, name='reservate_instrument'),
 ]
 
 # Добавьте этот код перед редиректом

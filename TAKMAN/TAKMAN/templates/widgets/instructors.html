@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+</head>
+<style>
+.instructors-card{
+    display:flex;
+}
+.instructors-card1{
+    width: 50%;
+    padding: 80px;
+}
+.instructors-card2{
+    width: 50%;
+}
+.instructors-container{
+    overflow-x: hidden;
+    margin: 0 -8px 0 -8px;
+}
+.instructor-title{
+    font-size: 72px;
+    font-weight: bold;
+}
+.instructor-text{
+}
+@media (max-width: 1000px) {
+    .instructor-title{
+        font-size: 30px;
+    }
+    .instructors-card2{
+    height:250px;
+}
+}
+</style>
+<div class="instructors-container">
+    <div class="instructors-card">
+        <div class="instructors-card1">
+            <div class="instructor-title">Гетманская Екатерина</div>
+            <div class="instructor-text">Дисциплина: лыжи</div>
+            <div class="instructor-text">Первый взрослый разряд по фристайлу, на лыжах с 7 лет. Опыт работы инструктором более 9 лет.</div>
+        </div>
+        <div  class="instructors-card2"><img src="{% static 'static_images/image 29.jpg' %}"></div>
+    </div>
+    <div class="instructors-card">
+        <div class="instructors-card1">
+            <div class="instructor-title">Гетманская Екатерина</div>
+            <div class="instructor-text">Дисциплина: лыжи</div>
+            <div class="instructor-text">Первый взрослый разряд по фристайлу, на лыжах с 7 лет. Опыт работы инструктором более 9 лет.</div>
+        </div>
+        <div  class="instructors-card2"><img src="{% static 'static_images/image 29.jpg' %}"></div>
+    </div>
+</div>
+</html>

@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Cottage, OurServices, Poster, Roads, PeopleReservationCottage
-from .forms import DateForm, ReplenishmentForm, BuySkiPassForm, PeopleReservationForm, CottageReservationForm
+from .models import Cottage, OurServices, Poster, Roads, PeopleReservationCottage, PeopleReservationInstrument, \
+    PeopleReservationInstructor
+from .forms import ReplenishmentForm, BuySkiPassForm, PeopleReservationForm, CottageReservationForm, \
+    InstrumentReservationForm, PeopleReservationInstrumrntForm, InstructorReservationForm, \
+    PeopleReservationInstructorForm
 
 
 def home(request):
@@ -35,20 +38,20 @@ def home(request):
 def skiing(request):
     roads = Roads.objects.all()
 
-    replenishment_form = ReplenishmentForm()  # Создаем экземпляр формы пополнения
-    buy_ski_pass_form = BuySkiPassForm()  # Создаем экземпляр формы покупки ски-пасса
+    replenishment_form = ReplenishmentForm()
+    buy_ski_pass_form = BuySkiPassForm()
 
     if request.method == 'POST':
-        if 'replenish' in request.POST:  # Проверяем, была ли отправлена форма пополнения
+        if 'replenish' in request.POST:
             replenishment_form = ReplenishmentForm(request.POST)
             if replenishment_form.is_valid():
                 replenishment_form.save()
-                return redirect('home')  # Укажите вашу страницу успешного завершения
-        elif 'buy' in request.POST:  # Проверяем, была ли отправлена форма покупки
+                return redirect('home')
+        elif 'buy' in request.POST:
             buy_ski_pass_form = BuySkiPassForm(request.POST)
             if buy_ski_pass_form.is_valid():
                 buy_ski_pass_form.save()
-                return redirect('home')  # Укажите вашу страницу успешного завершения
+                return redirect('home')
 
     return render(request, 'pages/skiing.html', {
         'roads': roads,
@@ -91,3 +94,57 @@ def accomodation_detail(request, id):
         form = CottageReservationForm()
         people_form = PeopleReservationForm()
     return render(request, 'pages/accommodation.html', {'cottage': cottage,'form': form, 'people_form': people_form})
+
+def services(request):
+    services = OurServices.objects.all()
+    replenishment_form = ReplenishmentForm()
+    buy_ski_pass_form = BuySkiPassForm()
+    if request.method == 'POST':
+        if 'replenish' in request.POST:
+            replenishment_form = ReplenishmentForm(request.POST)
+            if replenishment_form.is_valid():
+                replenishment_form.save()
+                return redirect('home')
+        elif 'buy' in request.POST:
+            buy_ski_pass_form = BuySkiPassForm(request.POST)
+            if buy_ski_pass_form.is_valid():
+                buy_ski_pass_form.save()
+                return redirect('home')
+    return render(request, 'pages/services.html',
+                  {
+                   'services': services,
+                    'replenishment_form': replenishment_form,
+                    'buy_ski_pass_form': buy_ski_pass_form,
+                })
+
+def reservateInstructor(request):
+    people_form = None
+    if request.method == 'POST':
+        form = InstructorReservationForm(request.POST)
+        full_names = request.POST.getlist('fullName')
+        if form.is_valid():
+            instructor_reservation = form.save()
+            for name in full_names:
+                if name:
+                    PeopleReservationInstructor.objects.create(fullName=name, instructor=instructor_reservation)
+            return redirect('services')
+    else:
+        form = InstructorReservationForm()
+        people_form = PeopleReservationInstructorForm()
+    return render(request, 'pages/reservateInstructor.html',{'form': form, 'people_form': people_form})
+
+def reservateInstrument(request):
+    people_form = None
+    if request.method == 'POST':
+        form = InstrumentReservationForm(request.POST)
+        full_names = request.POST.getlist('fullName')
+        if form.is_valid():
+            instrument_reservation = form.save()
+            for name in full_names:
+                if name:
+                    PeopleReservationInstrument.objects.create(fullName=name, instrument=instrument_reservation)
+            return redirect('services')
+    else:
+        form = InstrumentReservationForm()
+        people_form = PeopleReservationInstrumrntForm()
+    return render(request, 'pages/reservateInstrument.html',{'form': form, 'people_form': people_form})

@@ -1,7 +1,8 @@
 # forms.py
 from django import forms
 
-from .models import BuySkiPass, ReplenishmentOfBalanceSkiPass, PeopleReservationCottage, CottageReservation
+from .models import BuySkiPass, ReplenishmentOfBalanceSkiPass, PeopleReservationCottage, CottageReservation, \
+    ReservationInstrument, PeopleReservationInstrument, ReservationInstructor, PeopleReservationInstructor
 
 
 class DateForm(forms.Form):
@@ -40,9 +41,36 @@ class CottageReservationForm(forms.ModelForm):
             'dateFrom': forms.DateInput(attrs={'type': 'date'}),
             'dateTo': forms.DateInput(attrs={'type': 'date'}),
         }
-
 # Форма для добавления людей
 class PeopleReservationForm(forms.ModelForm):
     class Meta:
         model = PeopleReservationCottage
+        fields = ['fullName']
+class InstrumentReservationForm(forms.ModelForm):
+    class Meta:
+        model = ReservationInstrument
+        fields = ['date', 'time', 'instructor', 'instrument', 'price']
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date'}),
+            'time': forms.TimeInput(attrs={'type': 'time'}),
+        }
+# Форма для добавления людей
+class PeopleReservationInstrumrntForm(forms.ModelForm):
+    class Meta:
+        model = PeopleReservationInstrument
+        fields = ['fullName']
+
+
+class InstructorReservationForm(forms.ModelForm):
+    class Meta:
+        model = ReservationInstructor
+        fields = ['date', 'time', 'instructor', 'price']
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date'}),
+            'time': forms.TimeInput(attrs={'type': 'time'}),
+        }
+# Форма для добавления людей
+class PeopleReservationInstructorForm(forms.ModelForm):
+    class Meta:
+        model = PeopleReservationInstructor
         fields = ['fullName']
