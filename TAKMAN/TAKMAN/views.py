@@ -196,3 +196,6 @@ def informationPage(request):
 
 def summerPage(request):
     return render(request, 'pages/summer.html')
+
+def pricesPage(request):
+    return render(request, 'pages/prices.html')

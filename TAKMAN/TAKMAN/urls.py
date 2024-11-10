@@ -22,6 +22,7 @@ urlpatterns = [
     path('tour/', views.toursPage, name='tour'),
     path('inforamation/', views.informationPage, name='information'),
     path('summer/', views.summerPage, name='summer'),
+    path('prices/', views.pricesPage, name='prices')
 ]
 
 # Добавьте этот код перед редиректом

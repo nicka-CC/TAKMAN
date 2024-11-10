@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'pages/base.html' %} <!-- Перенесено в начало -->
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>ТАКМАН</title>
+    {% load static %}
+
+    {% endblock %}
+</head>
+
+{% block title %}TAKMAN{% endblock %}
+
+{% block content %}
+    {% include 'widgets/summerWidget.html' %}
+    {% include 'widgets/pricesTablePage.html' %}
+{% endblock %}
+</html>
