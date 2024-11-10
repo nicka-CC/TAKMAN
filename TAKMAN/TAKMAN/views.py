@@ -177,3 +177,22 @@ def sertificateBuy(request):
 
 def toursPage(request):
     return render(request, 'pages/tour.html')
+
+def informationPage(request):
+    people_form = None
+    if request.method == 'POST':
+        form = InstrumentReservationForm(request.POST)
+        full_names = request.POST.getlist('fullName')
+        if form.is_valid():
+            instrument_reservation = form.save()
+            for name in full_names:
+                if name:
+                    PeopleReservationInstrument.objects.create(fullName=name, instrument=instrument_reservation)
+            return redirect('services')
+    else:
+        form = InstrumentReservationForm()
+        people_form = PeopleReservationInstrumrntForm()
+    return render(request, 'pages/information.html',{'form': form, 'people_form': people_form})
+
+def summerPage(request):
+    return render(request, 'pages/summer.html')

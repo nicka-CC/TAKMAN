@@ -22,5 +22,4 @@ if __name__ == '__main__':
     main()
 
 
-# TODO: [frontend] 1920 - 960 - mobile-first
-# TODO:[frontend] pages (цены, информация, летом)
+# TODO:[frontend] pages (цены)

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'pages/base.html' %} <!-- Перенесено в начало -->
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>ТАКМАН</title>
+    {% load static %}
+
+    {% endblock %}
+</head>
+
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <div class="tcs-container">
+    <div class="info-services">
+        <img src="{% static 'static_images/IMG_1302 1.jpg' %}" alt="Услуги">
+        <div class="info-overlay">
+            <div class="info-services-title">Информация о курорте</div>
+            <div class="info-services-text">Добраться к нам можно несколькими способами: автобусом, электричкой и на личном транспорте. Из Перми или других городов — не важно!</div>
+        </div>
+    </div>
+</div>
+    {% include 'widgets/ski-pas.html' %}
+    {% include 'widgets/rulesLiving.html' %}
+    {% include 'widgets/rulesLiving2.html' %}
+    {% include 'widgets/howgoing.html' %}
+    {% include 'widgets/maps.html' %}
+     <style>
+    .tcs-container {
+        overflow-x: hidden;
+        margin: -8px -8px 0 -8px;
+    }
+
+    .info-services {
+        position: relative;
+        text-align: left;
+        color: white;
+        margin-bottom: 30px;
+    }
+
+    .info-services img {
+        width: 100%;
+        height: auto;
+        {#border-radius: 10px;#}
+    }
+
+    .info-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.4);
+        {#border-radius: 10px;#}
+    }
+
+    .info-services-title {
+        font-size: 48px;
+        margin-top: 20%;
+        margin-left: 30%;
+    }
+
+    .info-services-text {
+        font-size: 18px;
+         margin-left: 30%;
+        max-width: 900px;
+    }
+    @media(max-width: 600px) {
+        .info-services-title {
+            font-size: 20px;
+            margin-top: 10%;
+            margin-left: 20%;
+        }
+
+        .info-services-text {
+            font-size: 9px;
+            margin-left: 10%;
+            max-width: 200px;
+        }
+    }
+
+
+</style>
+{% endblock %}
+
+</html>
