@@ -3,7 +3,7 @@ from .models import Cottage, OurServices, Poster, Roads, PeopleReservationCottag
     PeopleReservationInstructor
 from .forms import ReplenishmentForm, BuySkiPassForm, PeopleReservationForm, CottageReservationForm, \
     InstrumentReservationForm, PeopleReservationInstrumrntForm, InstructorReservationForm, \
-    PeopleReservationInstructorForm
+    PeopleReservationInstructorForm, BuySertificateForm
 
 
 def home(request):
@@ -148,3 +148,32 @@ def reservateInstrument(request):
         form = InstrumentReservationForm()
         people_form = PeopleReservationInstrumrntForm()
     return render(request, 'pages/reservateInstrument.html',{'form': form, 'people_form': people_form})
+
+
+def sertificateBuy(request):
+    replenishment_form = ReplenishmentForm()
+    buy_ski_pass_form = BuySkiPassForm()
+    buy_certificate_form = BuySertificateForm()
+    if request.method == 'POST':
+        if 'replenish' in request.POST:
+            replenishment_form = ReplenishmentForm(request.POST)
+            if replenishment_form.is_valid():
+                replenishment_form.save()
+                return redirect('buy-sertificate')
+        elif 'buy' in request.POST:
+            buy_ski_pass_form = BuySkiPassForm(request.POST)
+            if buy_ski_pass_form.is_valid():
+                buy_ski_pass_form.save()
+                return redirect('buy-sertificate')
+        elif 'buy_certificate' in request.POST:
+            buy_certificate_form = BuySertificateForm(request.POST)
+            if buy_certificate_form.is_valid():
+                buy_certificate_form.save()
+                return redirect('buy-sertificate')
+    return render(request, 'pages/sertificate.html', {
+        'replenishment_form': replenishment_form,
+        'buy_ski_pass_form': buy_ski_pass_form,
+        'buy_certificate_form': buy_certificate_form,})
+
+def toursPage(request):
+    return render(request, 'pages/tour.html')

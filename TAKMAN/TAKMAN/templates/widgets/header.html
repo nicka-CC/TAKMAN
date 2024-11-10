@@ -13,8 +13,8 @@
         <a href="/skiing/" class="ass">Катание</a>
         <a href="/accommodation/" class="ass">Проживание</a>
         <a href="/services/" class="ass">Услуги</a>
-        <a href="/contact/" class="ass">Цены</a>
-         <a href="/contact/" class="ass">Как добраться</a>
+        <a href="/tour/" class="ass">Цены</a>
+         <a href="/tour/" class="ass">Как добраться</a>
          <a href="/contact/" class="ass">Информация</a>
          <a href="/contact/" class="ass sunny">Лето <img width="16px" src="{% static 'icons/sun-icon.svg' %}"></a>
     </div>
@@ -25,7 +25,7 @@
             <a href="https://instagram"><img width="30px" src="{% static 'icons/instagram-icon-white.svg' %}"></a>
         </div>
         <div class="thrd-content">
-            {% include 'ui/button.html' with button_class="btn-primarmy" button_theme="btn-second"  button_text="Купить онлайн" %}
+            <a href="/buy-sertificate/">{% include 'ui/button.html' with button_class="btn-primarmy" button_theme="btn-second"  button_text="Купить онлайн" %}</a>
         </div>
         <div class="burger" onclick="toggleMenu()">
             <img width="30px" src="{% static 'icons/burger.svg' %}">
@@ -39,7 +39,7 @@
     <a href="/accommodation/" class="ass">Проживание</a>
     <a href="/services/" class="ass">Услуги</a>
     <a href="/contact/" class="ass">Цены</a>
-    <a href="/contact/" class="ass">Как добраться</a>
+    <a href="/tour/" class="ass">Как добраться</a>
     <a href="/contact/" class="ass">Информация</a>
     <a href="/contact/" class="ass sunny">Лето <img width="16px" src="{% static 'icons/sun-icon.svg' %}"></a>
         {% include 'ui/button.html' with button_class="btn-primarmy" button_theme="btn-second"  button_text="Купить онлайн" %}

@@ -18,6 +18,8 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('services/reservate-instructor/', views.reservateInstructor, name='reservate-instructor'),
     path('services/reservate-instrument/', views.reservateInstrument, name='reservate_instrument'),
+    path('buy-sertificate/', views.sertificateBuy, name='buy-sertificate'),
+    path('tour/', views.toursPage, name='tour'),
 ]
 
 # Добавьте этот код перед редиректом

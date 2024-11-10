@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'pages/base.html' %} <!-- Перенесено в начало -->
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>ТАКМАН</title>
+    {% load static %}
+
+    {% endblock %}
+</head>
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<div class="container-tour">
+    <div class="image-container">
+        <img width="100%" src="{% static 'static_images/01.jpg' %}">
+    </div>
+    <div>
+        <div  class="tour-card tour-title">Туры на «Такман»</div>
+        <div class="tour-card">
+            <div class="tour-card1">
+                <div class=" tour-title">Электропоезд из Перми компанией ППК</div>
+                <div>Горнолыжный курорт «Такман» — место отдыха, которое идеально подходит для выходных в компании друзей или семьи. Здесь есть все условия, необходимые для комфортного отдыха — оборудованные горнолыжные склоны, спортивный инвентарь, бани, развлекательные комнаты и панорамное кафе.  Горнолыжный курорт «Такман» — место отдыха, которое идеально подходит для выходных в компании друзей или семьи. Здесь есть все условия, необходимые для комфортного отдыха — оборудованные горнолыжные склоны, спортивный инвентарь, бани, развлекательные комнаты и панорамное кафе.</div>
+            </div>
+            <div class="tour-card2"><img src="{% static 'icons/image 10.svg' %}"></div>
+        </div>
+        <div class="tour-card">
+            <div class="tour-card1">
+                <div class="  tour-title">Тур из Перми компанией А-ТУР</div>
+                <div>Информация о ценах, маршруте и бонусах </div>
+                <div>Место посадки / высадки пассажиров Такман экспресса </div>
+                <div>vk.com/transfer_na_takman</div>
+                <div>Написать в WhatsApp </div>
+                <div>Написать в Viber </div>
+                <div>+7 (992) 203-38-39</div>
+            </div>
+            <div class="tour-card2"><img src="{% static 'icons/image 11.svg' %}"></div>
+        </div>
+    </div>
+
+    {% include 'widgets/howgoing.html' %}
+    {% include 'widgets/maps.html' %}
+<style>
+        .container-tour {
+            overflow-x: hidden;
+            margin: -8px -8px 0 -8px;
+            position: relative;
+        }
+        .tour-title{
+            font-size: 52px;
+        }
+        .image-container {
+            position: relative;
+        }
+        .tour-card {
+            display: flex;
+            padding:80px;
+            flex-direction: row;
+        }
+        .tour-card1 {
+            width: 50%;
+        }
+        .tour-card2 {
+            width: 50%;
+        }
+    </style>
+</div>
+{% endblock %}
+</html>

@@ -23,7 +23,4 @@ if __name__ == '__main__':
 
 
 # TODO: [frontend] 1920 - 960 - mobile-first
-# TODO:[frontend] pages (цены, туры, информация, летом, сертификат)
-# TODO: [frontend] features (купить сертификат)
-# TODO: [frontend] entities (цены)
-# TODO: [frontend] widgets (цены, туры)
+# TODO:[frontend] pages (цены, информация, летом)

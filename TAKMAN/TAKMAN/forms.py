@@ -2,7 +2,8 @@
 from django import forms
 
 from .models import BuySkiPass, ReplenishmentOfBalanceSkiPass, PeopleReservationCottage, CottageReservation, \
-    ReservationInstrument, PeopleReservationInstrument, ReservationInstructor, PeopleReservationInstructor
+    ReservationInstrument, PeopleReservationInstrument, ReservationInstructor, PeopleReservationInstructor, \
+    BuyCertificate
 
 
 class DateForm(forms.Form):
@@ -74,3 +75,9 @@ class PeopleReservationInstructorForm(forms.ModelForm):
     class Meta:
         model = PeopleReservationInstructor
         fields = ['fullName']
+
+
+class BuySertificateForm(forms.ModelForm):
+    class Meta:
+        model = BuyCertificate
+        fields = ['fullNameBuyer', 'fullNameUses', 'phone', 'email', 'price']
